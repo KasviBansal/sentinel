@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.SVGPath?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sentinel.controller.LoginController" styleClass="login-root">
+    <VBox alignment="CENTER_LEFT" styleClass="login-hero" minWidth="490" prefWidth="760" HBox.hgrow="ALWAYS" spacing="20">
+        <padding><Insets top="50" right="62" bottom="41" left="62"/></padding>
+        <HBox alignment="CENTER_LEFT" spacing="13">
+            <StackPane styleClass="brand-mark"><SVGPath content="M 8 0 L 16 3 L 16 9 Q 15 15 8 19 Q 1 15 0 9 L 0 3 Z M 4 9 L 7 12 L 12 6" styleClass="brand-path"/></StackPane>
+            <VBox spacing="1"><Label text="SENTINEL" styleClass="brand"/><Label text="Financial Security" styleClass="brand-subtitle"/></VBox>
+        </HBox>
+        <Region VBox.vgrow="ALWAYS"/>
+        <StackPane alignment="CENTER" styleClass="hero-emblem">
+            <Polygon points="0,33,77,0,154,33,154,114,77,158,0,114" styleClass="hero-polygon"/>
+            <SVGPath styleClass="hero-shield" content="M 0 15 L 47 0 L 94 15 L 94 54 Q 87 91 47 114 Q 7 91 0 54 Z M 23 53 L 40 70 L 72 38"/>
+        </StackPane>
+        <Label text="Monitor. Detect. Protect." wrapText="true" styleClass="login-headline"/>
+        <Label text="Review transaction activity, investigate fraud alerts, and manage detection rules from one workspace." wrapText="true" maxWidth="405" styleClass="login-description"/>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Label text="UCS553  /  Enterprise Web Application" styleClass="micro"/>
+    </VBox>
+    <StackPane alignment="CENTER" minWidth="440" prefWidth="615" HBox.hgrow="ALWAYS" styleClass="login-side">
+        <VBox maxWidth="376" maxHeight="420" spacing="10" alignment="TOP_LEFT">
+            <Label text="Administrator sign-in" styleClass="login-title"/>
+            <Label text="Enter your credentials to open the monitoring workspace." wrapText="true" styleClass="muted"/>
+            <Region prefHeight="19"/>
+            <Label text="Email address" styleClass="field-label"/>
+            <TextField fx:id="email" promptText="admin@sentinel.demo" maxWidth="Infinity" onAction="#login"/>
+            <Label text="Password" styleClass="field-label"/>
+            <StackPane>
+                <PasswordField fx:id="password" promptText="Enter password" onAction="#login"/>
+                <TextField fx:id="visiblePassword" promptText="Enter password" onAction="#login" visible="false"/>
+            </StackPane>
+            <CheckBox fx:id="showPassword" text="Show password"/>
+            <Label fx:id="message" wrapText="true" minHeight="28" styleClass="validation"/>
+            <Button text="Sign in  →" onAction="#login" defaultButton="true" maxWidth="Infinity" styleClass="primary"/>
+            <Label text="Demo access   ·   admin@sentinel.demo" styleClass="micro"/>
+        </VBox>
+    </StackPane>
+</HBox>

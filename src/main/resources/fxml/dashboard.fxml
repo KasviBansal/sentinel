@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sentinel.controller.DashboardController" styleClass="page,dashboard-page" spacing="13">
+    <HBox alignment="CENTER_LEFT" spacing="14">
+        <VBox spacing="4">
+            <Label text="Financial Security Overview" styleClass="page-title"/>
+            <Label text="Monitor transactions and identify suspicious financial activity." styleClass="muted"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="●  Monitoring active" styleClass="monitoring"/>
+        <ComboBox fx:id="period" onAction="#refresh" prefWidth="124"/>
+        <Button text="↻  Refresh" onAction="#refresh" styleClass="secondary"/>
+    </HBox>
+    <HBox fx:id="cards" spacing="12"/>
+    <HBox fx:id="charts" spacing="12">
+        <VBox spacing="2" prefWidth="402" minWidth="220" HBox.hgrow="ALWAYS" styleClass="chart-card">
+            <HBox alignment="CENTER_LEFT" spacing="7"><Label text="Transaction Activity" styleClass="section-title"/><Region HBox.hgrow="ALWAYS"/><Label text="Daily volume" styleClass="micro"/></HBox>
+            <LineChart fx:id="activity" animated="false" createSymbols="false" legendVisible="false" verticalGridLinesVisible="false" prefHeight="170" minHeight="170">
+                <xAxis><NumberAxis fx:id="activityDates" tickMarkVisible="false" minorTickVisible="false" autoRanging="false" animated="false"/></xAxis>
+                <yAxis><NumberAxis tickMarkVisible="false" minorTickVisible="false" forceZeroInRange="true" animated="false"/></yAxis>
+            </LineChart>
+        </VBox>
+        <VBox spacing="2" prefWidth="258" minWidth="190" HBox.hgrow="ALWAYS" styleClass="chart-card">
+            <Label text="Fraud Distribution" styleClass="section-title"/>
+            <PieChart fx:id="distribution" animated="false" labelsVisible="false" legendVisible="false" prefHeight="143" minHeight="143"/>
+            <HBox alignment="CENTER" fx:id="pieLegend" spacing="13"/>
+        </VBox>
+        <VBox spacing="2" prefWidth="316" minWidth="220" HBox.hgrow="ALWAYS" styleClass="chart-card">
+            <Label text="Transaction Types" styleClass="section-title"/>
+            <BarChart fx:id="channels" animated="false" legendVisible="false" verticalGridLinesVisible="false" categoryGap="10" prefHeight="170" minHeight="170">
+                <xAxis><CategoryAxis tickMarkVisible="false" animated="false"/></xAxis>
+                <yAxis><NumberAxis tickMarkVisible="false" minorTickVisible="false" forceZeroInRange="true" animated="false"/></yAxis>
+            </BarChart>
+        </VBox>
+    </HBox>
+    <VBox spacing="7" styleClass="surface" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label text="Recent Fraud Alerts" styleClass="section-title"/>
+            <Label text="Latest flagged transactions in this period" styleClass="micro"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Open alert  ↗" fx:id="openAlert" styleClass="compact" onAction="#openSelected"/>
+        </HBox>
+        <StackPane fx:id="alertTable" VBox.vgrow="ALWAYS"/>
+    </VBox>
+</VBox>

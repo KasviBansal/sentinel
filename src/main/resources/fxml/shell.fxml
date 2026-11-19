@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sentinel.controller.ShellController" styleClass="workspace">
+    <left>
+        <VBox fx:id="sidebar" minWidth="206" prefWidth="220" maxWidth="220" styleClass="sidebar" spacing="6">
+            <HBox alignment="CENTER_LEFT" spacing="11" styleClass="sidebar-brand">
+                <StackPane styleClass="brand-mark"><SVGPath content="M 8 0 L 16 3 L 16 9 Q 15 15 8 19 Q 1 15 0 9 L 0 3 Z M 4 9 L 7 12 L 12 6" styleClass="brand-path"/></StackPane>
+                <VBox spacing="2"><Label text="SENTINEL" styleClass="brand"/><Label text="Financial Security" styleClass="brand-subtitle"/></VBox>
+            </HBox>
+            <Label text="WORKSPACE" styleClass="nav-caption"/>
+            <VBox fx:id="navigation" spacing="5"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <HBox alignment="CENTER_LEFT" styleClass="profile" spacing="10">
+                <Label text="AD" styleClass="avatar"/>
+                <VBox spacing="2"><Label text="Administrator" styleClass="profile-title"/><Label fx:id="profileEmail" styleClass="micro"/></VBox>
+            </HBox>
+            <Button text="↪   Log out" onAction="#logout" maxWidth="Infinity" styleClass="logout"/>
+        </VBox>
+    </left>
+    <center>
+        <BorderPane>
+            <top>
+                <HBox alignment="CENTER_LEFT" spacing="14" styleClass="topbar">
+                    <Label fx:id="breadcrumb" styleClass="breadcrumb"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="clockLabel" styleClass="micro"/>
+                    <Label text="AD" styleClass="avatar"/>
+                </HBox>
+            </top>
+            <center>
+                <ScrollPane fx:id="viewport" fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" styleClass="page-scroll"/>
+            </center>
+        </BorderPane>
+    </center>
+</BorderPane>
